@@ -1,39 +1,19 @@
-// function addCommas(num) {
-//     //convert to string and split into an array
-//     let arr = num.toString().split('')
-//     console.log(arr)
-
-//     //loop backwards, skipping every 3, adding ','
-//     let commaNum = []
-//     for (let i = arr.length; i >= 0; i--){
-        
-//         if ((i + 2) % 3 === 0) {
-//             console.log(arr[i])
-//             commaNum.unshift(`,${arr[i]}`)
-//         } else {
-//             commaNum.unshift(arr[i])
-//         }
-//     }
-//     console.log(commaNum)
-// }
 
 // let num = 9876543210;
 function addCommas(num) {
     //convert to string and split into an array
-    let arr = num.toString().split('')
+    let arr = num.toString().split('').reverse()
     console.log(arr)
 
-    //loop backwards, skipping every 3, adding ','
-    let commaNum = [];
-    for (let i = arr.length; i > 0; i--){
-        // console.log(arr[i], i)
-        if (i !== 0 && ((i + 2) % 3 === 0)) {
-            commaNum.unshift(`,${arr[i]}`)
-        } else (
-            commaNum.unshift(arr[i])
-        )
-    }
-    console.log(commaNum)
+    let commaArr = arr.map((el, idx, arr) => {
+        // console.log(arr[idx],idx)
+        if ((idx + 1) % 3 === 0){
+        return (`,${arr[idx]}`)
+        } else {
+            return arr[idx]
+        }
+    });
+    return commaArr.reverse().join('')
 }
 
 let num = 9876543210;
