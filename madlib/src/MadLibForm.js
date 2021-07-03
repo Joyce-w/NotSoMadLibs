@@ -3,7 +3,7 @@ import axios from "axios"
 import { v4 as uuid } from "uuid"
 import "./MadLibForm.css"
 
-const MadLibForm = () => {
+const MadLibForm = ({formData}) => {
     let initial = {}
 
 
@@ -11,15 +11,6 @@ const MadLibForm = () => {
     const [blanks, setBlanks] = useState();
     const [data, setData] = useState(initial)
 
-
-    //make inital directory
-    const createInitial = () => {
-        for (let n in blanks) {
-            initial[n] = '';
-        }
-        console.log(initial)
-        setData(initial)
-    }
     //get api data
     useEffect(() => {
 
@@ -36,19 +27,19 @@ const MadLibForm = () => {
         //handle data change
     const handleChange = (e) => {
         const { name, value } = e.target
-        console.log(name, value)
         initial[name] = value
         setData({ ...data, [name]: value })        
     }
 
     //handle form submit
-    const onSubmit = () => {
-        
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        formData(data)
     }
     
     return (
         <div className="MadLibForm">
-            <form >
+            <form onSubmit={handleSubmit}>
                 <h1>{ title }</h1>
                 {blanks ? blanks.map((word, idx) => {
                     
