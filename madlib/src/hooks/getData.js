@@ -1,17 +1,21 @@
 
 import React, { useState } from "react";
+import {v4 as uuid} from "uuid"
 
-const getData = () => {
+const useAxios = () => {
 
-    const [data, setData] = useState()
+    //state to hold data
+    const [data, setData] = useState([])
 
-    const addToData = () => {
-        
-        setData(data => [...data])
+    //callbackfunction to update state
+    const updateData = async (res) => {
+        setData(() =>
+            [...data,
+                { res, id: uuid() }
+            ])
     }
 
-    return [data, addToData];
+    return [data, updateData];
 }
 
-export default getData;
-
+export default useAxios;

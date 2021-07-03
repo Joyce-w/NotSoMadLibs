@@ -3,27 +3,26 @@ import axios from "axios"
 import { v4 as uuid } from "uuid"
 import "./MadLibForm.css"
 
-const MadLibForm = ({formData}) => {
+const MadLibForm = ({title, blanks, formData}) => {
     let initial = {}
 
-
-    const [title, setTitle] = useState();
-    const [blanks, setBlanks] = useState();
+    // const [title, setTitle] = useState();
+    // const [blanks, setBlanks] = useState([]);
     const [data, setData] = useState(initial)
 
-    //get api data
-    useEffect(() => {
+    // //get api data
+    // useEffect(() => {
 
-        async function getMadLib () {
-        const res = await axios.get('http://madlibz.herokuapp.com/api/random?maxlength=11')
-        console.log(res.data)
+    //     async function getMadLib () {
+    //     const res = await axios.get('http://madlibz.herokuapp.com/api/random?maxlength=11')
+    //     console.log(res.data)
 
-            setTitle(res.data.title)
-            setBlanks(res.data.blanks)
+    //         setTitle(res.data.title)
+    //         setBlanks(res.data.blanks)
             
-        }
-        getMadLib();
-    },[])
+    //     }
+    //     getMadLib();
+    // },[])
         //handle data change
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -42,7 +41,6 @@ const MadLibForm = ({formData}) => {
             <form onSubmit={handleSubmit}>
                 <h1>{ title }</h1>
                 {blanks ? blanks.map((word, idx) => {
-                    
                     return <input
                         id={idx}
                         key={ word + idx  }
