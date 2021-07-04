@@ -1,29 +1,11 @@
-import React, { useEffect, useState } from "react"
-import axios from "axios"
-import { v4 as uuid } from "uuid"
+import React, { useState } from "react"
 import "./MadLibForm.css"
 
 const MadLibForm = ({title, blanks, formData}) => {
     let initial = {}
 
-    // const [title, setTitle] = useState();
-    // const [blanks, setBlanks] = useState([]);
     const [data, setData] = useState(initial)
 
-    // //get api data
-    // useEffect(() => {
-
-    //     async function getMadLib () {
-    //     const res = await axios.get('http://madlibz.herokuapp.com/api/random?maxlength=11')
-    //     console.log(res.data)
-
-    //         setTitle(res.data.title)
-    //         setBlanks(res.data.blanks)
-            
-    //     }
-    //     getMadLib();
-    // },[])
-        //handle data change
     const handleChange = (e) => {
         const { name, value } = e.target
         initial[name] = value
@@ -38,7 +20,7 @@ const MadLibForm = ({title, blanks, formData}) => {
     
     return (
         <div className="MadLibForm">
-            <form onSubmit={handleSubmit}>
+            <form className="MadLibForm-form" onSubmit={handleSubmit}>
                 <h1>{ title }</h1>
                 {blanks ? blanks.map((word, idx) => {
                     return <input

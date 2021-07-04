@@ -14,8 +14,12 @@ const useAxios = () => {
                 { res, id: uuid() }
             ])
     }
+    //clear data
+    const clearData = () => {
+        setData([])
+    }
 
-    return [data, updateData];
+    return [data, updateData, clearData];
 }
 
 export default useAxios;
