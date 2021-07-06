@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MadLib"
+  >
+    <h1>
+      MadLib
+    </h1>
+    <div
+      class="MadLibForm"
+    >
+      <form
+        class="MadLibForm-form"
+      >
+        <h1 />
+        <button>
+          Make some mad libs
+        </button>
+      </form>
+    </div>
+    <div
+      class="MadLib-values"
+    />
+  </div>
+</DocumentFragment>
+`;
